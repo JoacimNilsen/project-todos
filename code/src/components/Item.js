@@ -21,12 +21,14 @@ export const Item = (props) => {
           type='checkbox'
           checked={props.item.done}
           onChange={handleCheckboxClick} />
+    <ColumnWrapper>
       <TaskText completed={props.item.done}>{props.item.name}</TaskText>
       <AddTask completed={props.item.done}>
             {props.item.done
               ? "Completed " + moment(props.item.completed).fromNow()
               : "Added " + moment(props.item.added).fromNow()}
       </AddTask>
+      </ColumnWrapper>
       <Remove onClick={handleRemoveButtonClick}>
       🗑️
       </Remove>
@@ -38,35 +40,51 @@ const TaskWrapper = styled.li`
 display: flex;
 align-items: center;
 justify-content: space-between;
-margin-bottom: 15px;
+border-bottom: 1px solid;
+width: 100%;
 `
 
 const Checkbox = styled.input`
-width: 20px;
-height: 20px;
+min-width: 20px;
+min-height: 20px;
 background-color: white;
 border-radius: 50%;
 margin: 0px 20px
 outline: none;
+transition: ease-in-out 600ms;
 &:checked {
+  transform: rotate(360deg);
   opacity: 0.6;
+}
+&:hover {
+  cursor: pointer;
 }
 `
 
 const TaskText = styled.p`
 font-size: 18px;
+margin-right: 20px;
+margin-left: 20px;
+`
+
+const ColumnWrapper = styled.div`
+display:flex;
+align-items: center;
+flex-direction: column;
 `
 
 const Remove = styled.button`
 background: transparent;
 border: none;
 &:hover {
+  transition: ease-in-out 600ms;
   cursor: pointer;
+  transform: rotateY(180deg);
 }
 `
 
 const AddTask = styled.p`
   opacity: ${props => (props.completed ? "0.6" : "1")};
   font-size: 10px;
-  margin: 0px;
+  margin-bottom: 10px;
 `

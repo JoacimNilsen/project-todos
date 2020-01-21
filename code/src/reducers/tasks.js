@@ -6,7 +6,7 @@ export const tasks = createSlice({
     items: [
       { id: 1, name: 'Milk', done: false, completed: Date.now(), added: Date.now()},
       { id: 2, name: 'Butter', done: true, completed: Date.now(), added: Date.now()},
-      { id: 3, name: 'Cheese', done: false, completed: Date.now(), added: Date.now()}
+      { id: 3, name: 'Cheese and the some Cheese and the some Cheese and the some Cheese and the some Cheese and the some ', done: false, completed: Date.now(), added: Date.now()}
     ]
   },
   reducers: {
